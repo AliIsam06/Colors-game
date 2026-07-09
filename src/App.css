@@ -192,6 +192,7 @@
     0 16px 45px rgba(0, 0, 0, 0.35);
   touch-action: none;
   user-select: none;
+  direction: ltr;
 }
 
 .board-grid {
@@ -201,6 +202,7 @@
   grid-template-columns: repeat(var(--grid-size), 1fr);
   grid-template-rows: repeat(var(--grid-size), 1fr);
   gap: var(--cell-gap);
+  direction: ltr;
 }
 
 .board-cell {
@@ -231,6 +233,7 @@
   grid-template-rows: repeat(var(--grid-size), 1fr);
   gap: var(--cell-gap);
   pointer-events: none;
+  direction: ltr;
 }
 
 .endpoint-cell {

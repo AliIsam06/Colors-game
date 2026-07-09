@@ -494,6 +494,7 @@ function App() {
           <div
             ref={boardRef}
             className="game-board"
+            dir="ltr"
             style={{
               ['--grid-size' as string]: currentLevel.size,
               ['--cell-gap' as string]: `${boardGap}px`,
