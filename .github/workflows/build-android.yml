@@ -8,7 +8,10 @@ on:
 
 jobs:
   build-debug-apk:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -41,3 +44,13 @@ jobs:
         with:
           name: Colors-Flow-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Commit APK to repository
+        run: |
+          mkdir -p releases
+          cp android/app/build/outputs/apk/debug/app-debug.apk "releases/Colors Flow.apk"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "releases/Colors Flow.apk"
+          git commit -m "Update debug APK [skip ci]" || exit 0
+          git push
